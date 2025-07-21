@@ -146,7 +146,7 @@
                 placeholder="Write your Message here" rows="3" required oninput="check()"></textarea>
             </div>
             <div class="col-12 mb-3">
-              <button id="submitBtn" class="btn btn-dark px-5 py-2 text-uppercase" type="submit" disabled>Submit</button>
+              <button id="submitBtn" class="btn btn-dark px-5 py-2 text-uppercase" type="submit" disabled onclick="submittedAlert()">Submit</button>
             </div>
           </form>
         </div>
@@ -188,23 +188,10 @@
         submitBtn.disabled = !(fn && ln && ea && m);
       }
 
-    // (() => {
-    //   const form = document.getElementById('contact-form-form');
-    //   const requiredFields = form.querySelectorAll('.required');
-    //
-    //     // Ensure all required fields have non-empty trimmed values
-    //     const allFilled = Array.from(requiredFields).every(input => input.value.trim() !== '');
-    //     submitBtn.disabled = !allFilled;
-
-      // // Attach listeners to track input changes
-      // requiredFields.forEach(field => {
-      //   field.addEventListener('input', checkFields);
-      //   field.addEventListener('change', checkFields);
-      // });
-
-      // // Initialize the correct button state on load
-      // document.addEventListener('DOMContentLoaded', checkFields);
-    // })();
+      function submittedAlert() {
+        const date = document.getElementById('currentDate').innerText;
+        alert('Form submitted successfully on ' + date);
+      }
   </script>
 </body>
 
