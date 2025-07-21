@@ -49,7 +49,7 @@
     <div class="container bg-white shadow-lg">
       <div class="row align-items-center g-md-5 top-margin">
         <div class="col-md-6 bg-image align-content-center p-5 mt-md-0">
-          <div id="currentDate" style="position: relative; top: 10px; left: 10px; font-family: Poppins;"></div>
+          <div id="currentDate" style="position: relative; top: -80px; font-family: Poppins; color: #3498db;"></div>
           <div class="d-flex mt-2">
             <div>
               <img src="images/templates-jungle.png" alt="logo" class="img-fluid me-2">
@@ -119,21 +119,21 @@
         </div>
         <div class="col-md-6 mt-5 mt-md-0 px-md-5">
           <h4 class="mb-md-5">Send us your message</h4>
-          <form id="contact-form-form" class="row g-md-3 needs-validation" novalidate>
+          <form class="row g-md-3 needs-validation" novalidate>
             <div class="col-md-6 mb-3">
               <label for="validationDefault01" class="form-label">First name*</label>
               <input type="text" class="form-control shadow-none" id="validationDefault01"
-                placeholder="Write your first name" required>
+                placeholder="Write your first name" required oninput="check()">
             </div>
             <div class="col-md-6 mb-3">
               <label for="validationDefault02" class="form-label">Last name*</label>
               <input type="text" class="form-control shadow-none" id="validationDefault02"
-                placeholder="Write your last name" required>
+                placeholder="Write your last name" required oninput="check()">
             </div>
             <div class="col-md-6 mb-3">
               <label for="exampleFormControlInput1" class="form-label">Email address*</label>
               <input type="email" class="form-control shadow-none" id="exampleFormControlInput1"
-                placeholder="Write your e-mail address" required>
+                placeholder="Write your e-mail address" required oninput="check()">
             </div>
             <div class="col-md-6 mb-3">
               <label for="validationDefault03" class="form-label">Phone Number</label>
@@ -143,7 +143,7 @@
             <div class="col-md-12 mb-3">
               <label for="exampleFormControlTextarea1" class="form-label">Message*</label>
               <textarea class="form-control shadow-none" id="exampleFormControlTextarea1"
-                placeholder="Write your Message here" rows="3" required></textarea>
+                placeholder="Write your Message here" rows="3" required oninput="check()"></textarea>
             </div>
             <div class="col-12 mb-3">
               <button id="submitBtn" class="btn btn-dark px-5 py-2 text-uppercase" type="submit" disabled>Submit</button>
@@ -179,26 +179,32 @@
   <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
 
   <script>
-    (() => {
-      const form = document.getElementById('contact-form-form');
-      const requiredFields = form.querySelectorAll('.required');
-      const submitBtn = document.getElementById('submitBtn');
-
-      function checkFields() {
-        // Ensure all required fields have non-empty trimmed values
-        const allFilled = Array.from(requiredFields).every(input => input.value.trim() !== '');
-        submitBtn.disabled = !allFilled;
+      function check() {
+        const fn = document.getElementById('validationDefault01').value;
+        const ln = document.getElementById('validationDefault02').value;
+        const ea = document.getElementById('exampleFormControlInput1').value;
+        const m = document.getElementById('exampleFormControlTextarea1').value;
+        const submitBtn = document.getElementById('submitBtn');
+        submitBtn.disabled = !(fn && ln && ea && m);
       }
 
-      // Attach listeners to track input changes
-      requiredFields.forEach(field => {
-        field.addEventListener('input', checkFields);
-        field.addEventListener('change', checkFields);
-      });
+    // (() => {
+    //   const form = document.getElementById('contact-form-form');
+    //   const requiredFields = form.querySelectorAll('.required');
+    //
+    //     // Ensure all required fields have non-empty trimmed values
+    //     const allFilled = Array.from(requiredFields).every(input => input.value.trim() !== '');
+    //     submitBtn.disabled = !allFilled;
 
-      // Initialize the correct button state on load
-      document.addEventListener('DOMContentLoaded', checkFields);
-    })();
+      // // Attach listeners to track input changes
+      // requiredFields.forEach(field => {
+      //   field.addEventListener('input', checkFields);
+      //   field.addEventListener('change', checkFields);
+      // });
+
+      // // Initialize the correct button state on load
+      // document.addEventListener('DOMContentLoaded', checkFields);
+    // })();
   </script>
 </body>
 
