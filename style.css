@@ -55,6 +55,7 @@ h4 {
     background-image: url('https://images.unsplash.com/photo-1651065566483-422c476f2047?q=80&w=2127&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
 }
 
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
 @media screen and (min-width: 1200px) {
 
